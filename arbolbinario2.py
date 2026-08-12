@@ -54,66 +54,24 @@ class ArbolBinario:
 
         return resultado
 
+    def level_order(self):
+        resultado = []
+        cola = deque()
 
-def inverse_polish_parser(expresion):
-    stack = []
+        if self.raiz is not None:
+            cola.append(self.raiz)
 
-    for elemento in expresion.split():
-        if elemento not in "+-*/":
-            stack.append(Nodo(elemento))
-        else:
-            derecho = stack.pop()
-            izquierdo = stack.pop()
+        while len(cola) > 0:
+            actual = cola.popleft()
+            resultado.append(actual.valor)
 
-            nodo = Nodo(elemento)
-            nodo.izquierdo = izquierdo
-            nodo.derecho = derecho
+            if actual.izquierdo is not None:
+                cola.append(actual.izquierdo)
 
-            stack.append(nodo)
+            if actual.derecho is not None:
+                cola.append(actual.derecho)
 
-    return stack.pop()
-
-
-def calculate(nodo):
-    if nodo.izquierdo is None and nodo.derecho is None:
-        return float(nodo.valor)
-
-    izquierdo = calculate(nodo.izquierdo)
-    derecho = calculate(nodo.derecho)
-
-    if nodo.valor == "+":
-        return izquierdo + derecho
-    elif nodo.valor == "-":
-        return izquierdo - derecho
-    elif nodo.valor == "*":
-        return izquierdo * derecho
-    elif nodo.valor == "/":
-        return izquierdo / derecho
-
-
-def evaluate(expresion):
-    arbol = inverse_polish_parser(expresion)
-    return calculate(arbol)
-
-
-def level_order(raiz):
-    lista = []
-    queue = deque()
-
-    if raiz is not None:
-        queue.append(raiz)
-
-    while len(queue) > 0:
-        current = queue.popleft()
-        lista.append(current.valor)
-
-        if current.izquierdo is not None:
-            queue.append(current.izquierdo)
-
-        if current.derecho is not None:
-            queue.append(current.derecho)
-
-    return lista
+        return resultado
 
 
 if __name__ == "__main__":
@@ -124,7 +82,6 @@ if __name__ == "__main__":
     raiz.izquierdo.derecho = Nodo("8")
     raiz.izquierdo.izquierdo.izquierdo = Nodo("2")
     raiz.izquierdo.izquierdo.derecho = Nodo("6")
-
     raiz.derecho = Nodo("-")
     raiz.derecho.izquierdo = Nodo("9")
     raiz.derecho.derecho = Nodo("2")
@@ -134,6 +91,4 @@ if __name__ == "__main__":
     print("Recorrido In Order:", arbol.inorder())
     print("Recorrido Pre Order:", arbol.preorder())
     print("Recorrido Post Order:", arbol.postorder())
-    print("Resultado:", calculate(arbol.raiz))
-    print("Evaluate:", evaluate("2 6 + 8 / 9 2 - *"))
-    print("Recorrido Level Order:", level_order(raiz))
+    print("Recorrido Level Order:", arbol.level_order())

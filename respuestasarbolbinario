@@ -1,0 +1,28 @@
+1- Todo arbol binario lleno tambien es un arbol binario completo
+
+2- Para saber si dos arboles son identicos, hay que comprobar que tengan la misma estructura y 
+   que los nodos en las mismas posiciones tengan el mismo valor
+
+3- En un arbol binario perfecto, la cantidad de nodos depende de su altura 
+   mediante la formula n = 2^(h+1) - 1
+
+7- Una expresion aritmetica es una cuenta formada por numeros y operaciones como suma, resta, 
+   multiplicacion y division que se pueden resolver siguiendo un orden determinado
+
+8-
+La notacion infija es:
+
+2 6 + 8 / 9 2 - *
+
+La notacion polaca es:
+
+* / + 2 6 8 - 9 2
+
+La notacion polaca inversa es:
+
+2 6 + 8 / 9 2 - *
+
+Para obtener la notacion infija se usa In Order, para la notacion polaca se usa Pre Order
+y para la notacion polaca inversa se usa Post Order
+
+9- 
