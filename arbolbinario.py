@@ -124,7 +124,6 @@ if __name__ == "__main__":
     raiz.izquierdo.derecho = Nodo("8")
     raiz.izquierdo.izquierdo.izquierdo = Nodo("2")
     raiz.izquierdo.izquierdo.derecho = Nodo("6")
-
     raiz.derecho = Nodo("-")
     raiz.derecho.izquierdo = Nodo("9")
     raiz.derecho.derecho = Nodo("2")
